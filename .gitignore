@@ -1,6 +1,5 @@
 output/
 .git
-.vscode
 *.lof
 *.lot
 *.pdf
