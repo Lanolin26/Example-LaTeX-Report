@@ -31,3 +31,43 @@
 \newcommand{\thenextpage}{\number\numexpr\thepage+1\relax}
 \newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 %-------------------------------------------------------------------%
+
+\def\gnewcommand{\g@star@or@long\new@command}
+\def\grenewcommand{\g@star@or@long\renew@command}
+\def\g@star@or@long#1{%
+    \@ifstar{\let\l@angrel@x\global#1}{\def\l@ngrel@x{\long\global}#1}%
+}
+
+% \newcommand{\@empty}{}
+
+% Факультет
+\newcommand{\i@faculty}{}
+\newcommand{\faculty}[1]{\grenewcommand{\i@faculty}{#1}}
+
+% Город
+\newcommand{\i@city}{}
+\newcommand{\city}[1]{\grenewcommand{\i@city}{#1}}
+
+% Вариант
+\newcommand{\i@variant}{}
+\newcommand{\variant}[1]{\grenewcommand{\i@variant}{#1}}
+
+%Учебная группа
+\newcommand{\i@edugroup}{}
+\newcommand{\edugroup}[1]{\grenewcommand{\i@edugroup}{#1}}
+
+% Преподаватель
+\newcommand{\i@teacher}{}
+\newcommand{\teacher}[1]{\grenewcommand{\i@teacher}{#1}}
+
+% Дисциплина
+\newcommand{\i@discipline}{}
+\newcommand{\discipline}[1]{\grenewcommand{\i@discipline}{#1}}
+
+% Образовательная программа
+\newcommand{\i@eduprogram}{}
+\newcommand{\eduprogram}[1]{\grenewcommand{\i@eduprogram}{#1}}
+
+% Дисциплина
+\newcommand{\i@speciality}{}
+\newcommand{\speciality}[1]{\grenewcommand{\i@speciality}{#1}}

@@ -27,6 +27,7 @@
 \captionsetup[table]{justification=raggedright, labelsep=defffis, format=plain, singlelinecheck=false} % Подпись таблицы слева
 \addto\captionsrussian{\renewcommand{\figurename}{Рисунок}} % Имя фигуры
 \addto\captionsrussian{\renewcommand{\lstlistingname}{Листинг}}
+\addto\captionsrussian{\renewcommand{\tablename}{Таблица}}
 %----------------------------------------------------------------------%
 
 %---Заголовки секций в оглавлении в верхнем регистре-------------------%
@@ -70,6 +71,7 @@
 
 %---Секция для списка иллюстративного материала------------------------%
 \newcommand{\lof}{
+    \clearpage
     \phantomsection
     \listoffigures
     \addcontentsline{toc}{section}{\listfigurename}
@@ -78,6 +80,7 @@
 
 %---Секция для списка табличного материала-----------------------------%
 \newcommand{\lot}{
+    \clearpage
     \phantomsection
     \listoftables
     \addcontentsline{toc}{section}{\listtablename}
@@ -86,6 +89,7 @@
 
 %----Секции для приложений---------------------------------------------%
 \newcommand{\appsection}[1]{
+    \clearpage
     \phantomsection
     \centerline{{#1}}
     \addcontentsline{toc}{section}{{#1}}
