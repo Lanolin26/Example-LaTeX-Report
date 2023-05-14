@@ -12,7 +12,7 @@ build_job:
     only:
         - master
     script:
-        - make build 
+        - make artifacts 
         - make clean
         - mv main.pdf ${PDF_NAME}
     artifacts:
