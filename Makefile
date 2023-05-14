@@ -5,7 +5,7 @@ ARTIFACT_DIR ?= artifact
 MAIN_BUILD_FILE=main
 
 BUILD=xelatex
-BUILD_OPT=-synctex=1 -interaction=nonstopmode -file-line-error -recorder -output-directory="$(OUTPUT_DIR)" -jobname=$(OUTPUT_FILE)
+BUILD_OPT=-synctex=1 -interaction=nonstopmode -file-line-error -recorder -output-directory="$(OUTPUT_DIR)" -jobname="$(OUTPUT_FILE)"
 CLEAN_FILES=*.aux *.fdb_latexmk *.fls *.log *.out *.blg *.bbl *.ps *.synctex.gz *.toc *.nav *.snm *.xdv *.lot *.lof
 
 DOCKER_IMAGE ?= lanolin25/docker-latex
@@ -34,14 +34,18 @@ create_artifacts:
 	@mkdir -p $(ARTIFACT_DIR)
 
 build: create_output_dir *.tex
+	@echo "Build stage 1"
 	$(BUILD) $(BUILD_OPT) $(MAIN_BUILD_FILE).tex
 	@mv $(OUTPUT_DIR)/$(OUTPUT_FILE).log $(OUTPUT_DIR)/$(OUTPUT_FILE)_1.log
 	
+	@echo "Build stage 2"
 	bibtex $(OUTPUT_DIR)/$(OUTPUT_FILE).aux
 	
+	@echo "Build stage 3"
 	$(BUILD) $(BUILD_OPT) $(MAIN_BUILD_FILE).tex
 	@mv $(OUTPUT_DIR)/$(OUTPUT_FILE).log $(OUTPUT_DIR)/$(OUTPUT_FILE)_2.log
 	
+	@echo "Build stage 4"
 	$(BUILD) $(BUILD_OPT) $(MAIN_BUILD_FILE).tex
 	@mv $(OUTPUT_DIR)/$(OUTPUT_FILE).log $(OUTPUT_DIR)/$(OUTPUT_FILE)_3.log
 
