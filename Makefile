@@ -57,4 +57,4 @@ docker-create:
 	docker build -t $(DOCKER_IMAGE_NAME) .
 
 docker-build:
-	docker run --rm -ti -v ${PWD}:/build:Z $(DOCKER_IMAGE_NAME) sh -c "make clean clear build clean"
+	docker run --rm -ti -v ${PWD}:/build:Z $(DOCKER_IMAGE_ALL) sh -c "make clean clear build clean"
